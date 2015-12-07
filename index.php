@@ -6,5 +6,6 @@
     //2: Wczytanie kontrolera. Po wczytaniu configa mamy dostęp do obiektu conf
 	include $conf->root_path.'/app/ctrl.php';
     
+    // NIE ZDAMY <3
     
 ?>
