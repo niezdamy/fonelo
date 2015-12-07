@@ -1,0 +1,90 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass";
+
+html{
+    font-size: 100%;
+    //overflow: hidden;
+}
+
+body{
+    font-family: 'Oxygen', sans-serif;
+    background-color: #fff;
+}
+
+#wrapper_index{
+    padding:0;
+}
+
+#login_wrapper{
+    background: image-url("main1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}
+
+.fit-all-screen{
+    height: 100vh;
+    overflow: hiden;
+}
+.jumbotron-login{
+    padding-top: 25vh;
+    margin-bottom: 0;
+    background: none;
+
+    .form-login{
+        background-color: rgba(255,255,255,0.3);
+        border: none;
+    }
+}
+
+.navbar-white{
+    background-color: #fff;
+}
+
+#wrapper{
+    padding-left:0;
+}
+
+.navbar_hide{
+    @include translateX(-100%);
+    @include transition(transform 0.6s ease);
+}
+
+.navbar_hide.open{
+    @include translateX(0);
+}
+
+.step_class{
+    @include transition(transform 0.6s ease);
+    //@include transition(opacity 0.6s ease);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.form_wrapper{
+    position: relative;
+    //overflow: hidden;
+}
+
+#step_one{
+    //@include translateX(0);
+    opacity: 1;
+    z-index:3;
+}
+
+#step_two{
+    @include translateX(-100%); 
+    //opacity: 0;
+    z-index:2;
+}
+
+#step_three{
+    @include translateX(-100%);
+    //opacity: 0;
+    z-index:1;
+}
