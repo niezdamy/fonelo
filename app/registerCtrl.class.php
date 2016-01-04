@@ -79,11 +79,13 @@
 							"INSERT INTO `users` (
 								`username`, 
 								`email`, 
-								`password`) 
+								`password`
+								) 
 							 VALUES (
 							 	:username, 
 							 	:email, 
-							 	:password)"
+							 	:password
+							 	)"
 						);
 						$stmt->bindValue(':username', $this->username, PDO::PARAM_STR);
 						$stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
@@ -140,7 +142,6 @@
 			    	$return = array();
 					$tmp = new Smarty();
 					$tmp->assign('msgs',$this->msgs);
-
 					// Rendered html with messages which is placed before end body tag.
 					$rendered = $tmp->fetch($conf->root_path.'/templates/messages.tpl');
 

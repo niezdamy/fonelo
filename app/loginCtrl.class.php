@@ -8,7 +8,9 @@
 		
 		private $username;
 		private $password;
-		
+
+		private $pass;
+
 		private $msgs;
 		private $db;
 		
@@ -40,6 +42,7 @@
 				$stmt->bindValue(1, $this->username, PDO::PARAM_STR);  
 				$stmt->bindValue(2, $this->password, PDO::PARAM_STR);  
 				$stmt->execute();
+
 				}catch(PDOException $e){
 					$this->msgs->addError('Problem z logowaniem: '.$e->getMessage());
 					echo ($e->getMessage());
@@ -52,10 +55,39 @@
 					$_SESSION['logged'] = true;
           			$_SESSION['id'] = $row['user_id'];
 					$_SESSION['user_login'] = $row['username'];
+
 					//$_SESSION['user_role'] = $row['role'];
+					
 				}
 				else{
-					$this->msgs->addError('Niepoprawny login lub hasło');
+								
+					$stmt = $this->db->pdo->prepare("SELECT * FROM users WHERE username=? ");  
+					$stmt->bindValue(1, $this->username, PDO::PARAM_STR);  
+					$stmt->execute();
+					$row = $stmt->fetch(PDO::FETCH_ASSOC);
+					$counter = $row['invalid_pass'];
+
+					if ($counter >=3){
+						$this->msgs->addError('Andrzej, przypomij se hasło');
+
+						/* TUTAJ TRZEBA ZROBIĆ PRZEKIEROWANIE NA STRONĘ Z PRZYPOMNIENIEM :P
+
+						global $conf;
+						header("Location: ".$conf->root_path.'/templates/remind.tpl');
+						die();
+
+						*/
+					}
+
+					$counter ++; 
+					$this->msgs->addError('Niepoprawne hasło, licznik błędnych logowań dla usera: ' . $this->username . " wynosi: " . $counter);
+
+					// Aktualizacja zinkrementowanego licznika nieudanych logowań
+					$stmt = $this->db->pdo->prepare("UPDATE `users` SET `invalid_pass` = $counter WHERE username=? ");
+					$stmt->bindValue(1, $this->username, PDO::PARAM_STR); 
+					$stmt->execute(); 
+
+
 				}
 				
 				//---------------------------------------------------------------------
@@ -64,6 +96,8 @@
 			
 			return ! $this->msgs->isError ();
 		}
+
+
 		
 		public function doLogin(){
 			if( isset($_REQUEST['loginSubmit']) ){
