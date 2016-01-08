@@ -67,20 +67,21 @@
 					$row = $stmt->fetch(PDO::FETCH_ASSOC);
 					$counter = $row['invalid_pass'];
 
+					$counter++;
+
 					if ($counter >=3){
-						$this->msgs->addError('Andrzej, przypomij se hasło');
-
-						/* TUTAJ TRZEBA ZROBIĆ PRZEKIEROWANIE NA STRONĘ Z PRZYPOMNIENIEM :P
-
 						global $conf;
-						header("Location: ".$conf->root_path.'/templates/remind.tpl');
-						die();
 
-						*/
+						$link = $conf->app_url.'/app/ctrl.php?action=przypomnij-full';
+						$this->msgs->addError('Andrzej, przypomij se hasło. Przekroszyłeś licznik błędnych logowań. <a href="'.$link.'" alt="">Przypomnij</a>');
+
+						//echo '<script> console.log(\'ERR\'); </script>';
+					}else{
+						
+						$this->msgs->addError('Niepoprawne hasło, licznik błędnych logowań dla usera: ' . $this->username . " wynosi: " . $counter);
 					}
 
-					$counter ++; 
-					$this->msgs->addError('Niepoprawne hasło, licznik błędnych logowań dla usera: ' . $this->username . " wynosi: " . $counter);
+					
 
 					// Aktualizacja zinkrementowanego licznika nieudanych logowań
 					$stmt = $this->db->pdo->prepare("UPDATE `users` SET `invalid_pass` = $counter WHERE username=? ");
