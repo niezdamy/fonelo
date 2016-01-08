@@ -25,7 +25,7 @@
 			//$mysql_host = '91.231.82.96:8080'; 
 			$mysql_host = 'localhost'; 
 			$username = 'root';
-			$password = '';
+			$password = 'root';
 			$database = 'fonelo';
 			 
 			try{

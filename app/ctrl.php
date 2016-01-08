@@ -65,6 +65,12 @@
 			$tmp->generateView();
 		break;
 
+		case 'przypomnij-full' :
+			require_once $conf->root_path.'/app/remindCtrl.class.php';
+			$tmp = new remindCtrl();
+			$tmp->generateFullView();
+		break;
+
 		case 'wygeneruj' :
 			require_once $conf->root_path.'/app/remindCtrl.class.php';
 			$tmp = new remindCtrl();

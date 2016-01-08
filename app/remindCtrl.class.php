@@ -115,6 +115,10 @@
 				if ( $this->validate() ){
 
 					$this->msgs->addInfo ( 'Nowe wygenerowane hasło: <span style="font-size: 26px; margin:auto 30px;">'.$this->new_pass.'</span> Zaloguj się!' );
+					
+					$stmt = $this->db->pdo->prepare("UPDATE `users` SET `invalid_pass` = 0 WHERE email=? ");
+					$stmt->bindValue(1, $this->email, PDO::PARAM_STR); 
+					$stmt->execute();
 
 					$tmp = new Smarty();
 					$tmp->assign('conf',$conf);
@@ -155,6 +159,9 @@
 		}
 		
 		public function generateView(){
+			/*
+			 * Generate only Content
+			 */
 
 			global $conf;
 			
@@ -163,11 +170,24 @@
 			$tmp->assign('msgs',$this->msgs);
 			//$tmp->assign('new_pass',$this->new_pass);
 			
-			$tmp->display($conf->root_path.'/templates/remind.tpl');
+			$tmp->display($conf->root_path.'/templates/remind_ajax.tpl');
 			
 		}
 	
-		
+		public function generateFullView(){
+			/*
+			 * Generate full HTML
+			 */
+			global $conf;
+			
+			$tmp = new Smarty();
+			$tmp->assign('conf',$conf);
+			$tmp->assign('msgs',$this->msgs);
+			//$tmp->assign('new_pass',$this->new_pass);
+			
+			$tmp->display($conf->root_path.'/templates/remind.tpl');
+		}
+
 	}
 	
 ?>
