@@ -11,6 +11,12 @@
   {block name=modals} Błąd przy wczytywaniu modali. {/block}
 
   {include file=$conf->root_path|cat:"/templates/messages.tpl"}
+
+  <footer>
+    <div class="inner">
+      
+    </div>
+  </footer>
   
   <!-- WYŚWIETLANIE BŁĘDÓW -->  
   {if $msgs->isError()||$msgs->isInfo()}

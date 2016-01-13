@@ -1,0 +1,5 @@
+1. Jeśli usuniemy kontakt, dostaniemy info o poprawnym usunięciu. Ale jeśli z danymi w POST odświeżymy stronę dostajemy informację, że kontakt już wcześniej został usunięty. Gdyby nie to to za każdym takim odświeżeniem mielibyśmy info, że zostało usunięte, a nie było już co usuwać.
+@see: mainPageCtrl.class.php -> delContact()
+
+2. Walidacja wprowadzanych danych kontaktu. Wszystko dynamicznie z odpowiednimi wyrażeniami regularnymi. Np przejdzie +48 32 234 23 23, lub 654 345 654
+

@@ -72,10 +72,7 @@
 					if ($counter >=3){
 						global $conf;
 
-						$link = $conf->app_url.'/app/ctrl.php?action=przypomnij-full';
-						$this->msgs->addError('Andrzej, przypomij se hasło. Przekroszyłeś licznik błędnych logowań. <a href="'.$link.'" alt="">Przypomnij</a>');
-
-						//echo '<script> console.log(\'ERR\'); </script>';
+						$this->msgs->addError('Andrzej, przypomij se hasło. Przekroszyłeś licznik błędnych logowań. <span id="remind-pass">Przypomnij tutaj.</span>');
 					}else{
 						
 						$this->msgs->addError('Niepoprawne hasło, licznik błędnych logowań dla usera: ' . $this->username . " wynosi: " . $counter);

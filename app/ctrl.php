@@ -16,10 +16,6 @@
 			if ( !$conf->is_session_started() ){
 				session_start();
 			} 
-
-			// if (session_status() == PHP_SESSION_NONE) {
-			//     session_start();
-			// }
 			
 			if(!isset($_SESSION['logged'])){
                 include_once $conf->root_path.'/app/loginCtrl.class.php';
@@ -28,10 +24,11 @@
 				
 				exit();
 			}else{ 
-				header("Location: ".$conf->app_url."/");
-				?>
-				<script>console.log('ZALOGOWANY');</script>
-				<?php
+				require_once $conf->root_path.'/app/mainPageCtrl.class.php';
+	            $tmp = new mainPageCtrl();
+				$tmp->generateView();
+				//header("Location: ".$conf->app_url);
+				//die();
 			}
 		break;
 		
@@ -65,12 +62,6 @@
 			$tmp->generateView();
 		break;
 
-		case 'przypomnij-full' :
-			require_once $conf->root_path.'/app/remindCtrl.class.php';
-			$tmp = new remindCtrl();
-			$tmp->generateFullView();
-		break;
-
 		case 'wygeneruj' :
 			require_once $conf->root_path.'/app/remindCtrl.class.php';
 			$tmp = new remindCtrl();
@@ -83,17 +74,38 @@
 			$tmp->generateView();
 		break;
     
-		case 'addWorkout' :
+		case 'addContact' :
 			require_once $conf->root_path.'/app/mainPageCtrl.class.php';
 			$tmp = new mainPageCtrl();
-			$tmp->addWorkout();
+			$tmp->addContact();
+		break;
+
+		case 'editContact' :
+			require_once $conf->root_path.'/app/mainPageCtrl.class.php';
+			$tmp = new mainPageCtrl();
+			$tmp->editContact();
 		break;
 		
-		case 'delWorkout' :
+		case 'delContact' :
 			require_once $conf->root_path.'/app/mainPageCtrl.class.php';
 			$tmp = new mainPageCtrl();
-			$tmp->delWorkout();
+			$tmp->delContact();
 		break;
+
+		case 'delGroup' :
+			require_once $conf->root_path.'/app/mainPageCtrl.class.php';
+			$tmp = new mainPageCtrl();
+			$tmp->delGroup();
+		break;
+
+		case 'searchContact' :
+			require_once $conf->root_path.'/app/mainPageCtrl.class.php';
+			$tmp = new mainPageCtrl();
+			$tmp->searchContact();
+		break;
+
+
+
 		
 		case 'uploadPhoto' :
 			require_once $conf->root_path.'/app/mainPageCtrl.class.php';
