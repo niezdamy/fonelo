@@ -18,9 +18,6 @@ body {
   min-height: 100vh;
   overflow: hidden; }
 
-#page-wrapper {
-  min-height: 95vh; }
-
 .jumbotron-login {
   padding-right: 120px !important;
   margin-top: 15vh;
@@ -72,17 +69,9 @@ body {
   background-color: #222; }
 
 .profile_relative {
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
+  -webkit-transform: translateY(-40px);
+  transform: translateY(-40px);
   transition: all .6s ease; }
-
-.profile_static_a {
-  -webkit-transform: translateY(-50px);
-  transform: translateY(-50px); }
-
-.profile_static {
-  -webkit-transform: translateY(0);
-  transform: translateY(0); }
 
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:focus,
@@ -101,7 +90,7 @@ body {
 
 .mainPageImage {
   width: 100%;
-  height: 100vh;
+  height: 50vh;
   background-position: bottom !important;
   background-size: cover !important;
   position: fixed;
@@ -159,5 +148,88 @@ select option {
   padding: 5px 0 0 10px !important;
   margin: 0 !important;
   color: red; }
+
+/*
+* Rules for Footer
+*/
+body {
+  background-color: #fff; }
+
+footer {
+  box-sizing: border-box;
+  margin-top: 30px;
+  background-color: #fff; }
+  footer .inner {
+    background-color: #222;
+    min-height: 200px; }
+
+/*
+* Rules for Search Bar
+*/
+.not-found, .not-found:focus {
+  border-color: rgba(234, 0, 68, 0.3);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); }
+
+/*
+* Rules for main search
+*/
+.search-wrap-row {
+  width: 100%;
+  height: 100%; }
+  .search-wrap-row .search-wrap-col {
+    height: 100%;
+    position: relative; }
+    .search-wrap-row .search-wrap-col .search-content {
+      position: absolute;
+      width: 70%;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+      .search-wrap-row .search-wrap-col .search-content .form-group {
+        margin-bottom: 0; }
+      .search-wrap-row .search-wrap-col .search-content #fast-live-search {
+        padding: 30px 20px;
+        font-size: 25px;
+        font-weight: 200;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-width: 0; }
+        .search-wrap-row .search-wrap-col .search-content #fast-live-search.searched {
+          border-bottom-left-radius: 0px;
+          border-bottom-right-radius: 0px; }
+
+.search-result {
+  position: fixed;
+  z-index: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 0 15px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
+  max-height: 0;
+  transition: all .6s ease; }
+  .search-result .contact-wrap h4 {
+    margin-bottom: 0; }
+  .search-result .p-not-found {
+    margin: 10px auto; }
+  .search-result.result-open {
+    max-height: 2000px;
+    padding: 5px 15px;
+    z-index: 10000; }
+
+/*
+* Rules for sub search
+*/
+#live-search {
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 100; }
+
+#contact-table tbody {
+  transition: all .6s ease; }
 
 /*# sourceMappingURL=style.css.map */

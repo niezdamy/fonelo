@@ -173,20 +173,6 @@
 			$tmp->display($conf->root_path.'/templates/remind_ajax.tpl');
 			
 		}
-	
-		public function generateFullView(){
-			/*
-			 * Generate full HTML
-			 */
-			global $conf;
-			
-			$tmp = new Smarty();
-			$tmp->assign('conf',$conf);
-			$tmp->assign('msgs',$this->msgs);
-			//$tmp->assign('new_pass',$this->new_pass);
-			
-			$tmp->display($conf->root_path.'/templates/remind.tpl');
-		}
 
 	}
 	
