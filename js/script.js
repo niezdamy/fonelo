@@ -596,13 +596,19 @@ jQuery( function( $ ) {
 	        data: {"group_name":group},
 	        dataType: "json",
 	             
-            success:function(data) {
+            success: function(data) {
+            	console.log('Błąd niebłąd :)');
             	//$("#myModal").remove();
-				$('#delGroupModal').modal('hide');
-				$("#myModal").modal('show');
+				//$('#delGroupModal').modal('hide');
+				//$("#myModal").modal('show');
             },
 
             error: function(blad) {
+            	console.log('Niebłąd błąd :)');
+            	$('#delGroupModal').modal('hide');
+            	$("#myModal .modal-body ol").empty();
+            	$("#myModal .modal-body ol").append("<li>Usunięto grupę</li>");
+            	$("#myModal").modal('show');
             	console.log(blad);
             }
 
@@ -638,15 +644,14 @@ jQuery( function( $ ) {
 	/*
 	* Wyświetl input wprowadzania nowej grupy jeśli wybierzemy "Dodaj nową..."
 	*/
-	if ( $('#inputGroup option').length = 2) {
+	console.log($('#inputGroup option').length);
+	if ( $('#inputGroup option').length == 2) {
 		$("#inputNewGroup").css("display","block");
-	}else{
-		$("#inputNewGroup").css("display","none");
 	};
 
 	$(document).on("change","#inputGroup",function(e){
-		console.log('OK');
-		if ($(this).val() == 'Dodaj nową...') {
+		console.log($(this).val());
+		if ($(this).val() == 'addNew') {
 			$("#inputNewGroup").css("display","block");
 			console.log( $(this).val() );
 		}else{

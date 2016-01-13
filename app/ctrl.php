@@ -102,58 +102,6 @@
 			require_once $conf->root_path.'/app/mainPageCtrl.class.php';
 			$tmp = new mainPageCtrl();
 			$tmp->searchContact();
-		break;
-
-
-
-		
-		case 'uploadPhoto' :
-			require_once $conf->root_path.'/app/mainPageCtrl.class.php';
-			$tmp = new mainPageCtrl();
-			$tmp->uploadPhoto();
-		break;
-		
-		case 'viewProfile' :
-			require_once $conf->root_path.'/app/profilePageCtrl.class.php';
-			$tmp = new profilePageCtrl();
-			$tmp->generateView();
-		break;
-		
-		case 'viewSettings' :
-			require_once $conf->root_path.'/app/settingsPageCtrl.class.php';
-			$tmp = new settingsPageCtrl();
-			$tmp->generateView();
-		break;
-		
-		case 'changeSettings' :
-			require_once $conf->root_path.'/app/settingsPageCtrl.class.php';
-			$tmp = new settingsPageCtrl();
-			$tmp->changeSettings();
-		break;
-		
-		case 'changeImage' :
-			require_once $conf->root_path.'/app/settingsPageCtrl.class.php';
-			$tmp = new settingsPageCtrl();
-			$tmp->changeImage();
-		break;
-		
-		// case 'showPresentation' :
-		// 	require_once $conf->root_path.'/app/presentationPageCtrl.class.php';
-		// 	$tmp = new presentationPageCtrl();
-		// 	$tmp->generateView();
-		// break;
-		
-		case 'showContact' :
-			require_once $conf->root_path.'/app/contactCtrl.class.php';
-			$tmp = new contactCtrl();
-			$tmp->generateView();
-		break;
-    
-  //   	case 'setTutorial' :
-		// 	require_once $conf->root_path.'/app/presentationPageCtrl.class.php';
-		// 	$tmp = new presentationPageCtrl();
-		// 	$tmp->setTutorial();
-		// break;
-		
+		break;		
 	}
 ?>

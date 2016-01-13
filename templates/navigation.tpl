@@ -6,14 +6,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand">Elomondo</a>
+          <a class="navbar-brand" href="{$conf->app_url}">Fonelo</a>
         </div>
         <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="{$conf->app_url}">Home</a></li>
-            <li class="visible-lg visible-md"><a href="{$conf->action_root}showPresentation">Pomoc</a></li>
-            <li><a href="{$conf->action_root}showContact">Kontakt</a></li>
-          </ul>
           <ul class="nav navbar-nav navbar-right">
 
             <!-- ALERT -->

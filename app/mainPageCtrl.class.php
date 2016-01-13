@@ -276,7 +276,8 @@
 				else
 					$this->msgs->addError( 'Grupa została już wcześniej usunięta.' );
 				
-				$this->generateView();
+				//$this->generateView();
+				echo "USUNIĘTO";
 
 			}catch(PDOException $e){
 				$this->msg->addError('Wystąpił nieoczekiwany problem'.$e->getMessage());
@@ -303,35 +304,6 @@
 		}
 	/*-------------------------------------------------------------------------------------------------------------------------------*/	
 		
-	/*-------------------------------------------------------------------------------------------------------------------------------*/
-		public function uploadPhoto(){
-			global $conf;
-			
-			$plik_tmp = $_FILES['plik']['tmp_name'];
-			$plik_nazwa = $_FILES['plik']['name'];
-			$plik_rozmiar = $_FILES['plik']['size'];
-			
-			if(is_uploaded_file($plik_tmp)) {
-				$meta = pathinfo($plik_nazwa);
-				$ext = $meta['extension'];
-				if ($ext =="jpg")
-				{
-					$stmt = $this->db->pdo->prepare("UPDATE `users` SET `avatar` = :avatar WHERE `user_id` = :user");
-					$stmt->bindValue(':avatar', $_SESSION['user_login'], PDO::PARAM_STR);  
-					$stmt->bindValue(':user', $_SESSION['id'], PDO::PARAM_INT);  
-					$stmt->execute();
-					
-					move_uploaded_file($plik_tmp, "../images/profile_photos/".$_SESSION['user_login'].".jpg");
-					$this->msgs->addinfo('Plik został dodany pomyślnie');
-				}
-				else $this->msgs->addError('Nieprawidłowe rozszerzenie pliku.');
-			}else $this->msgs->addError('Wystąpił problem z dodaniem pliku. Prawdopodobnie plik nie spełnia wymogów.');
-			
-			$this->generateView();
-		}
-	/*-------------------------------------------------------------------------------------------------------------------------------*/
-	
-	
 	/*-------------------------------------------------------------------------------------------------------------------------------*/	
 		public function generateView(){
 			

@@ -52,7 +52,7 @@
                             {foreach $groups as $wiersz}
                                 <option>{$wiersz}</option>
                             {/foreach}
-                                <option id="add-new-group">Dodaj nową...</option>
+                                <option id="add-new-group" value="addNew">Dodaj nową...</option>
                             </select>
                         </div>
                         <div class="col-sm-6">
